@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-public class MyTeleop {
+
     /* Copyright (c) 2021 FIRST. All rights reserved.
      *
      * Redistribution and use in source and binary forms, with or without modification,
@@ -64,9 +64,9 @@ public class MyTeleop {
      * Remove or comment out the @Disabled line to add this OpMode to the Driver Station OpMode list
      */
 
-    @TeleOp(name="Basic: Omni Linear OpMode", group="Linear OpMode")
+    @TeleOp(name="MyTeleop")
 //    @Disabled
-    public class BasicOmniOpMode_Linear extends LinearOpMode {
+    public class MyTeleop extends LinearOpMode {
 
         // Declare OpMode members for each of the 4 motors.
         private ElapsedTime runtime = new ElapsedTime();
@@ -147,10 +147,10 @@ public class MyTeleop {
                 // Once the correct motors move in the correct direction re-comment this code.
 
 
-            frontLeftPower  = gamepad1.x ? 1.0 : 0.0;  // X gamepad
-            backLeftPower   = gamepad1.a ? 1.0 : 0.0;  // A gamepad
-            frontRightPower = gamepad1.y ? 1.0 : 0.0;  // Y gamepad
-            backRightPower  = gamepad1.b ? 1.0 : 0.0;  // B gamepad
+//            frontLeftPower  = gamepad1.x ? 1.0 : 0.0;  // X gamepad
+//            backLeftPower   = gamepad1.a ? 1.0 : 0.0;  // A gamepad
+//            frontRightPower = gamepad1.y ? 1.0 : 0.0;  // Y gamepad
+//            backRightPower  = gamepad1.b ? 1.0 : 0.0;  // B gamepad
 
 
                 // Send calculated power to wheels
@@ -167,4 +167,4 @@ public class MyTeleop {
             }
         }}
 
-}
+
