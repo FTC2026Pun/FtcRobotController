@@ -102,7 +102,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
             backLeftDrive.setDirection(DcMotor.Direction.REVERSE);
             frontRightDrive.setDirection(DcMotor.Direction.FORWARD);
             backRightDrive.setDirection(DcMotor.Direction.FORWARD);
-            intakeDrive.setDirection(DcMotor.Direction.REVERSE);
+            intakeDrive.setDirection(DcMotor.Direction.FORWARD);
 
             // Wait for the game to start (driver presses START)
             telemetry.addData("Status", "Initialized");
@@ -157,7 +157,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 //            backLeftPower   = gamepad1.a ? 1.0 : 0.0;  // A gamepad
 //            frontRightPower = gamepad1.y ? 1.0 : 0.0;  // Y gamepad
 //            backRightPower  = gamepad1.b ? 1.0 : 0.0;  // B gamepad
-                intakePower  = gamepad1.x ? 1.0 : 0.0;  // X gamepad
+                intakePower  = gamepad1.left_trigger_pressed ? 1.0 : 0.0;  // X gamepad
 
 
                 // Send calculated power to wheels
