@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 
@@ -74,6 +75,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
         private DcMotor backLeftDrive = null;
         private DcMotor frontRightDrive = null;
         private DcMotor backRightDrive = null;
+        private DcMotor intakeDrive = null;
 
         @Override
         public void runOpMode() {
@@ -84,6 +86,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
             backLeftDrive = hardwareMap.get(DcMotor.class, "back_left_drive");
             frontRightDrive = hardwareMap.get(DcMotor.class, "front_right_drive");
             backRightDrive = hardwareMap.get(DcMotor.class, "back_right_drive");
+            intakeDrive = hardwareMap.get(DcMotor.class, "intake_drive");
 
             // ########################################################################################
             // !!!            IMPORTANT Drive Information. Test your motor directions.            !!!!!
@@ -99,6 +102,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
             backLeftDrive.setDirection(DcMotor.Direction.REVERSE);
             frontRightDrive.setDirection(DcMotor.Direction.FORWARD);
             backRightDrive.setDirection(DcMotor.Direction.FORWARD);
+            intakeDrive.setDirection(DcMotor.Direction.REVERSE);
 
             // Wait for the game to start (driver presses START)
             telemetry.addData("Status", "Initialized");
@@ -122,6 +126,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
                 double frontRightPower = axial - lateral - yaw;
                 double backLeftPower   = axial - lateral + yaw;
                 double backRightPower  = axial + lateral - yaw;
+                double intakePower  = axial + lateral - yaw;
 
                 // Normalize the values so no wheel power exceeds 100%
                 // This ensures that the robot maintains the desired motion.
@@ -134,6 +139,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
                     frontRightPower /= max;
                     backLeftPower   /= max;
                     backRightPower  /= max;
+                    intakePower  /= max;
                 }
 
                 // This is test code:
@@ -151,6 +157,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 //            backLeftPower   = gamepad1.a ? 1.0 : 0.0;  // A gamepad
 //            frontRightPower = gamepad1.y ? 1.0 : 0.0;  // Y gamepad
 //            backRightPower  = gamepad1.b ? 1.0 : 0.0;  // B gamepad
+                intakePower  = gamepad1.x ? 1.0 : 0.0;  // X gamepad
 
 
                 // Send calculated power to wheels
@@ -158,6 +165,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
                 frontRightDrive.setPower(frontRightPower);
                 backLeftDrive.setPower(backLeftPower);
                 backRightDrive.setPower(backRightPower);
+                intakeDrive.setPower(intakePower);
 
                 // Show the elapsed game time and wheel power.
                 telemetry.addData("Status", "Run Time: " + runtime.toString());
