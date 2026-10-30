@@ -73,7 +73,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
             backLeftDrive.setDirection(DcMotor.Direction.REVERSE);
             frontRightDrive.setDirection(DcMotor.Direction.FORWARD);
             backRightDrive.setDirection(DcMotor.Direction.FORWARD);
-            intakeDrive.setDirection(DcMotor.Direction.FORWARD);
+            intakeDrive.setDirection(DcMotor.Direction.REVERSE);
 
             // Wait for the game to start (driver presses START)
             telemetry.addData("Status", "Initialized");
